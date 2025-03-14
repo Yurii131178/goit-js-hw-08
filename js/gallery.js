@@ -1,8 +1,8 @@
-// Кожний об’єкт являє собою один елемент галереї.
+const container = document.querySelector(".gallery");
 
-// preview — посилання на маленьку версію зображення для картки галереї
-// original — посилання на велику версію зображення для модального вікна
-// description — текстовий опис зображення, для атрибута alt малого зображення та підпису великого зображення в модалці.
+console.log('Container:', container);
+
+
 const images = [
   {
     preview:
@@ -69,25 +69,38 @@ const images = [
   },
 ];
 
-const container = document.querySelector(".gallery");
-
-const galleryMarkup = images.map(({ preview, original, description }) =>
-    `<li class="gallery-item">
-        <a class="gallery-link" href="${original}">
+const galleryMarkup = images
+    .map(({ preview, original, description }) =>
+        `<li class="gallery-item"><a class="gallery-link" href="${original}">
             <img
                 class="gallery-image"
                 src="${preview}"
                 data-source="${original}"
-                alt="${description}"
-            />
-        </a>
-    </li>`
-)
-.join("");    
+                alt="${description}"/>
+            </a>
+        </li>`
+    )
+    .join("");    
 
-container.insertAdjacentHTML("beforeend", galleryMarkup);
+container.innerHTML = galleryMarkup;
 
-container.addEventListener("click", (event) => {
-    event.preventDefault();
-})
-        
+container.addEventListener('click', (event) => {
+    event.preventDefault(); 
+      
+    const target = event.target;
+
+    if (target.nodeName === 'IMG') {
+    console.log('Посилання на велике зображення:', target.dataset.source); 
+    }
+    
+    const instance = basicLightbox.create(`
+        <img
+        src="${target.dataset.source}"
+        alt="${target.alt}"
+      />
+      `)
+
+    instance.show()
+});
+
+
