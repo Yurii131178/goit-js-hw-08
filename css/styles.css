@@ -57,3 +57,14 @@ body {
   height: auto;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
+
+/* add image.alt to modal */
+
+.lightbox-description {
+
+    color: rgb(209, 247, 143);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 48px;
+    letter-spacing: normal;
+   
+}
