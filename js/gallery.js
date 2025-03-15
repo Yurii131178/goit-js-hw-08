@@ -90,10 +90,8 @@ container.addEventListener('click', (event) => {
     const target = event.target;
 
     if (target.nodeName === 'IMG') {
-    console.log('Посилання на велике зображення:', target.dataset.source); 
-    }
-    
-    const instance = basicLightbox.create(`
+        
+        const instance = basicLightbox.create(`
         <img
         src="${target.dataset.source}"
         alt="${target.alt}"
@@ -101,6 +99,13 @@ container.addEventListener('click', (event) => {
       `)
 
     instance.show()
+    
+    } else {
+        return;
+    } 
+    
+    
+   
 });
 
 
