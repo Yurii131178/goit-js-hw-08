@@ -88,26 +88,29 @@ container.addEventListener("click", (event) => {
   const target = event.target;
 
   if (target.nodeName === "IMG") {
-    const instance = basicLightbox.create(`
-        <img
-        src="${target.dataset.source}"
-        alt="${target.alt}"
-      />
-      `);
 
-    instance.show();
+// ----------simple modal window with large image appearance---------------- //
+
+    // const instance = basicLightbox.create(`
+    //     <img
+    //     src="${target.dataset.source}"
+    //     alt="${target.alt}"
+    //   />
+    //   `);
+
+    // instance.show();
 
     //  --------------add image.alt to modal ----------------- //
 
-    //         const instance = basicLightbox.create(`
-    //     <div class="lightbox-content">
-    //         <img
-    //             src="${target.dataset.source}"
-    //             alt="${target.alt}"
-    //         />
-    //         <p class="lightbox-description">${target.alt}</p>
-    //     </div>
-    // `);
-    // instance.show();
+            const instance = basicLightbox.create(`
+        <div class="lightbox-content">
+            <img
+                src="${target.dataset.source}"
+                alt="${target.alt}"
+            />
+            <p class="lightbox-description">${target.alt}</p>
+        </div>
+    `);
+    instance.show();
   } else return;
 });
